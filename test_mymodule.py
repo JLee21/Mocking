@@ -92,11 +92,46 @@ def test_mock_inherited_class_instance():
     app = App()
     app.base.show()
 
-    app.base = Mock()
-    app.base.attr.return_value = 'new'
+    # app.base = Mock()
+    app.base.show = Mock()
+    app.base.show.return_value = 'new'
     app.base.show()
 
 def test_base2():
     Base2.show()
     base2 = Base2()
     base2.show()
+
+
+"""
+S T A C K  O V E R F L O W 
+The instance member or instance variable of a class is different from
+class attribute or class property. this mocked the attr only by keeping all
+class attributes.
+"""
+
+import mock
+from app import App
+from app import Base
+import unittest
+from StringIO import StringIO
+class TestApp(unittest.TestCase):
+
+    @mock.patch('sys.stdout', new_callable=StringIO)
+    def test_mock_instance_var(self, mocked_stdout):
+
+        base = Base()
+        app = App()
+
+        mock_base = mock.MagicMock(name='Base', spec=Base)
+        instance = mock_base.return_value
+        instance.attr.return_value = 'mmm'
+        base.attr = instance.attr.return_value
+        self.assertEqual(base.attr, 'mmm')
+
+        app.base = base
+
+        self.assertEqual(app.base.attr, 'mmm')
+        # the print stdout of show()
+        app.base.show()
+        self.assertEqual(mocked_stdout.getvalue(), 'mmm\n')

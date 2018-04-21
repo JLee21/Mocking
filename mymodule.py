@@ -31,7 +31,7 @@ class Base():
         self.attr = 'original_value'
 
     def show(self):
-        print('\nasdfasdfasdf', self.attr)
+        print('\nBase show:', self.attr)
 
 class Base2():
     global attr
