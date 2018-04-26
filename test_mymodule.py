@@ -104,7 +104,7 @@ def test_base2():
 
 
 """
-S T A C K  O V E R F L O W 
+S T A C K  O V E R F L O W
 The instance member or instance variable of a class is different from
 class attribute or class property. this mocked the attr only by keeping all
 class attributes.
@@ -123,6 +123,7 @@ class TestApp(unittest.TestCase):
         base = Base()
         app = App()
 
+        # Only magic methods will be called from Base.
         mock_base = mock.MagicMock(name='Base', spec=Base)
         instance = mock_base.return_value
         instance.attr.return_value = 'mmm'
