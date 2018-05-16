@@ -1,7 +1,7 @@
 # Mocking
 A repo to hold all python testing exercises.
 
-# Resourse
+# Resources
 
 [Brian Getting Started Mocking](https://myadventuresincoding.wordpress.com/2011/02/26/python-python-mock-cheat-sheet/)
 
