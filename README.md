@@ -1,6 +1,10 @@
 # Mocking
 A repo to hold all python testing exercises.
 
+# Resourse
+
+[Brian Getting Started Mocking](https://myadventuresincoding.wordpress.com/2011/02/26/python-python-mock-cheat-sheet/)
+
 # Wish List - in order from easiest to hardest
 * Patch a single function.
   Be able to assign a return value, check if it's been called, check
