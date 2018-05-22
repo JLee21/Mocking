@@ -79,35 +79,14 @@ def test_mock_a_class_func():
     print(xx)
     myclass.class_mock_one.assert_called_with()
 
-def test_mock_inherited_class_instance_no_mock():
-    """ Without mocking. """
-    app = App()
-    print('\n', app.base.attr)
-    assert app.base.attr == 'original_value'
-
-# @mock.patch('mymodule.Base')
-def test_mock_inherited_class_instance():
-    """ With mocking. Change app.base.attr from 'original_value' to 'new_value'.
-    """
-    app = App()
-    app.base.show()
-
-    # app.base = Mock()
-    app.base.show = Mock()
-    app.base.show.return_value = 'new'
-    app.base.show()
-
-def test_base2():
-    Base2.show()
-    base2 = Base2()
-    base2.show()
-
 
 """
 S T A C K  O V E R F L O W
+How to mock a base class's attribute.
 The instance member or instance variable of a class is different from
 class attribute or class property. this mocked the attr only by keeping all
 class attributes.
+https://stackoverflow.com/questions/49785120/python-mock-a-base-classs-attribute
 """
 
 import mock
@@ -123,7 +102,7 @@ class TestApp(unittest.TestCase):
         base = Base()
         app = App()
 
-        # Only magic methods will be called from Base.
+        # Special methods will also be called from Base.
         mock_base = mock.MagicMock(name='Base', spec=Base)
         instance = mock_base.return_value
         instance.attr.return_value = 'mmm'

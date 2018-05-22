@@ -18,6 +18,14 @@ A repo to hold all python testing exercises.
 
 * Test a class function and also mock class attributes, which the function uses.
 
+* Call a real class within a fixture. But, the following is called within the the __init__
+  and it cannot be called b/c it queires actual hardware.
+
+  self.int_bme = bme.init_internal_bme_sensor()
+
+  So `bme.init_internal_bme_sensor` needs to be patched.
+
+
 # Mock attributes
 assert_any_call
 assert_called
@@ -47,7 +55,7 @@ Scenario #1
 class Base():
     def __init__(self):
         self.attr = 'original_value'
-        
+
     def show(self):
         print('\nasdfasdfasdf', self.attr)        
 
