@@ -7,10 +7,9 @@ from myserial import SerialConnection
 class MyApp():
 
     global ser
-    ser = SerialConnection()
 
     def __init__(self):
-        pass
+        ser = SerialConnection()
 
     @ser.decorator
     def myfunc(self):
