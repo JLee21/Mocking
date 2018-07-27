@@ -6,10 +6,10 @@ from myserial import SerialConnection
 
 class MyApp():
 
-    global ser
+    ser = SerialConnection()
 
     def __init__(self):
-        ser = SerialConnection()
+        print(self.myfunc())
 
     @ser.decorator
     def myfunc(self):
